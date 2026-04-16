@@ -1,70 +1,375 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<title>FIFA Skeletal Tracking Leaderboard</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIFA Skeletal Tracking · Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-body{font-family:system-ui,sans-serif;max-width:960px;margin:2em auto;padding:0 1em;color:#111}
-h1{margin-bottom:0.2em} .sub{color:#666;margin-top:0}
-table{width:100%;border-collapse:collapse;margin-top:1em}
-th,td{padding:0.55em 0.6em;border-bottom:1px solid #e2e2e2;text-align:left}
-th{background:#fafafa} tr:hover td{background:#fafafa}
-td:first-child{text-align:right;color:#666;width:3em}
-.ok{color:#0a7;font-weight:bold;margin-left:0.3em}
-</style></head><body>
-<h1>FIFA Skeletal Tracking Leaderboard</h1>
-<p class="sub">Primary metric: <code>total_error</code> &middot; lower is better &middot; best submission per entry &middot; <span class="ok">✓</span> = verified team mapping</p>
-<table>
-<thead><tr><th>#</th><th>Name</th><th>Type</th><th>total_error</th><th>Best submitter</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>foolhard</td><td></td><td>0.5200</td><td>foolhard</td></tr>
-<tr><td>2</td><td>fifa-3</td><td></td><td>0.5200</td><td>fifa-3</td></tr>
-<tr><td>3</td><td>fifa-2</td><td></td><td>0.5200</td><td>fifa-2</td></tr>
-<tr><td>4</td><td>houseiwang</td><td></td><td>0.5300</td><td>houseiwang</td></tr>
-<tr><td>5</td><td>pikash07</td><td></td><td>0.5300</td><td>pikash07</td></tr>
-<tr><td>6</td><td>zhanggj16</td><td></td><td>0.5400</td><td>zhanggj16</td></tr>
-<tr><td>7</td><td>050821xjw</td><td></td><td>0.5400</td><td>050821xjw</td></tr>
-<tr><td>8</td><td>chenmg2qq</td><td></td><td>0.5700</td><td>chenmg2qq</td></tr>
-<tr><td>9</td><td>yumjoy</td><td></td><td>0.5700</td><td>yumjoy</td></tr>
-<tr><td>10</td><td>gugugaga</td><td></td><td>0.5900</td><td>gugugaga</td></tr>
-<tr><td>11</td><td>hunterpaddi02</td><td></td><td>0.5900</td><td>hunterpaddi02</td></tr>
-<tr><td>12</td><td>ahmedsaker</td><td></td><td>0.6200</td><td>ahmedsaker</td></tr>
-<tr><td>13</td><td>ZIad Nassif</td><td></td><td>0.6300</td><td>ZIad Nassif</td></tr>
-<tr><td>14</td><td>guojun2008</td><td></td><td>0.6600</td><td>guojun2008</td></tr>
-<tr><td>15</td><td>Sarthi316GC</td><td></td><td>0.7100</td><td>Sarthi316GC</td></tr>
-<tr><td>16</td><td>csugzy</td><td></td><td>0.7100</td><td>csugzy</td></tr>
-<tr><td>17</td><td>amaher-</td><td></td><td>0.7200</td><td>amaher-</td></tr>
-<tr><td>18</td><td>yu-1414</td><td></td><td>0.8200</td><td>yu-1414</td></tr>
-<tr><td>19</td><td>rfukush</td><td></td><td>1.0100</td><td>rfukush</td></tr>
-<tr><td>20</td><td>Ahmed Aly</td><td></td><td>1.0100</td><td>Ahmed Aly</td></tr>
-<tr><td>21</td><td>babajideowoyele</td><td></td><td>1.0200</td><td>babajideowoyele</td></tr>
-<tr><td>22</td><td>lincharlie</td><td></td><td>1.0200</td><td>lincharlie</td></tr>
-<tr><td>23</td><td>vromero98</td><td></td><td>1.0200</td><td>vromero98</td></tr>
-<tr><td>24</td><td>Cassius</td><td></td><td>1.0300</td><td>Cassius</td></tr>
-<tr><td>25</td><td>riku359</td><td></td><td>1.0300</td><td>riku359</td></tr>
-<tr><td>26</td><td>test</td><td></td><td>1.0400</td><td>test</td></tr>
-<tr><td>27</td><td>Milo</td><td></td><td>1.0500</td><td>Milo</td></tr>
-<tr><td>28</td><td>ortegatron</td><td></td><td>1.0500</td><td>ortegatron</td></tr>
-<tr><td>29</td><td>takashun</td><td></td><td>1.0500</td><td>takashun</td></tr>
-<tr><td>30</td><td>pramani</td><td></td><td>1.0500</td><td>pramani</td></tr>
-<tr><td>31</td><td>eduardohas</td><td></td><td>1.0500</td><td>eduardohas</td></tr>
-<tr><td>32</td><td>Baseline <span class="ok" title="Verified via team-mapping form">✓</span></td><td>Individual</td><td>1.0500</td><td>tijiang</td></tr>
-<tr><td>33</td><td>huatai_pan</td><td></td><td>1.0500</td><td>huatai_pan</td></tr>
-<tr><td>34</td><td>ko4ro</td><td></td><td>1.0500</td><td>ko4ro</td></tr>
-<tr><td>35</td><td>yanchi</td><td></td><td>1.0500</td><td>yanchi</td></tr>
-<tr><td>36</td><td>yassientawfik</td><td></td><td>1.0500</td><td>yassientawfik</td></tr>
-<tr><td>37</td><td>nefary</td><td></td><td>1.0500</td><td>nefary</td></tr>
-<tr><td>38</td><td>mphillipsio</td><td></td><td>1.0500</td><td>mphillipsio</td></tr>
-<tr><td>39</td><td>sief_sameh</td><td></td><td>1.0500</td><td>sief_sameh</td></tr>
-<tr><td>40</td><td>gabrielesan</td><td></td><td>1.0500</td><td>gabrielesan</td></tr>
-<tr><td>41</td><td>kevin8856</td><td></td><td>1.0600</td><td>kevin8856</td></tr>
-<tr><td>42</td><td>fr7oooo</td><td></td><td>1.0600</td><td>fr7oooo</td></tr>
-<tr><td>43</td><td>luizleitefilho</td><td></td><td>1.0600</td><td>luizleitefilho</td></tr>
-<tr><td>44</td><td>YS</td><td></td><td>1.0600</td><td>YS</td></tr>
-<tr><td>45</td><td>aisatsanz</td><td></td><td>1.0600</td><td>aisatsanz</td></tr>
-<tr><td>46</td><td>emamade</td><td></td><td>1.0600</td><td>emamade</td></tr>
-<tr><td>47</td><td>kev-the-brownie</td><td></td><td>1.0700</td><td>kev-the-brownie</td></tr>
-<tr><td>48</td><td>canipek</td><td></td><td>1.1200</td><td>canipek</td></tr>
-<tr><td>49</td><td>gazpacho</td><td></td><td>1.3300</td><td>gazpacho</td></tr>
-<tr><td>50</td><td>naokioka</td><td></td><td>1.3500</td><td>naokioka</td></tr>
-<tr><td>51</td><td>seantang</td><td></td><td>29.8400</td><td>seantang</td></tr>
-</tbody></table>
-</body></html>
+  :root{
+    --bg: #0a0d0b;
+    --bg-deep: #06080a;
+    --fg: #ece7d5;
+    --fg-mid: #8a9088;
+    --fg-dim: #565b55;
+    --line: rgba(236,231,213,0.07);
+    --line-strong: rgba(236,231,213,0.16);
+    --accent: #d4ff4a;
+    --accent-soft: rgba(212,255,74,0.12);
+    --gold: #e7bd6a;
+    --silver: #c8ccd2;
+    --bronze: #c78957;
+  }
+  *,*::before,*::after{ box-sizing:border-box }
+  html,body{ margin:0; padding:0 }
+  html{ scroll-behavior:smooth }
+  body{
+    font-family:'Geist','Helvetica Neue',system-ui,sans-serif;
+    font-weight:400;
+    background:var(--bg);
+    color:var(--fg);
+    min-height:100vh;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 12% -10%, rgba(212,255,74,0.07), transparent 55%),
+      radial-gradient(ellipse 80% 55% at 95% 110%, rgba(212,255,74,0.04), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+    background-attachment:fixed;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.45; mix-blend-mode:overlay;
+  }
+
+  main{
+    position:relative; z-index:1;
+    max-width:1100px;
+    margin:0 auto;
+    padding: clamp(3rem, 7vh, 6rem) clamp(1.2rem, 4vw, 2.4rem) 7rem;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin:0 0 1.4rem;
+    display:flex; align-items:center; gap:.9rem;
+  }
+  .eyebrow::before{
+    content:""; width:10px; height:10px;
+    background:var(--accent);
+    box-shadow:0 0 18px rgba(212,255,74,0.65);
+    transform:rotate(45deg);
+    flex:none;
+  }
+  .eyebrow::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(to right, var(--line-strong), transparent);
+  }
+
+  h1{
+    font-family:'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+    font-weight:400;
+    font-size: clamp(3rem, 8vw, 6.2rem);
+    line-height:.92;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--accent);
+    font-weight:400;
+  }
+  .lede{
+    font-family:'Instrument Serif',Georgia,serif;
+    font-style:italic;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    color:var(--fg-mid);
+    max-width:46ch;
+    margin:1.2rem 0 0;
+    line-height:1.4;
+  }
+
+  .meta{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:1.2rem 2rem;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:1.4rem 0;
+    margin:3rem 0 2.5rem;
+  }
+  .meta-item{ display:flex; flex-direction:column; gap:.35rem }
+  .meta-label{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:.64rem;
+    letter-spacing:.22em;
+    color:var(--fg-dim);
+    text-transform:uppercase;
+  }
+  .meta-val{
+    color:var(--fg);
+    font-size:.95rem;
+    display:flex; align-items:baseline; gap:.55em; flex-wrap:wrap;
+  }
+  .meta-val code{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:.15em .55em;
+    border-radius:3px;
+    font-size:.78rem;
+    letter-spacing:.02em;
+  }
+  .meta-val .sep{ color:var(--fg-dim); font-size:.82em }
+
+  .table-frame{
+    margin-top:.5rem;
+    overflow-x:auto;
+    scrollbar-width:thin;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-variant-numeric:tabular-nums lining-nums;
+  }
+  thead th{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:.66rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--fg-dim);
+    text-align:left;
+    padding: .9rem .95rem;
+    border-bottom:1px solid var(--line-strong);
+    background:transparent;
+    position:sticky; top:0;
+    backdrop-filter:blur(6px);
+  }
+  thead th.num{ text-align:right }
+  tbody td{
+    padding: 1.05rem .95rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:middle;
+  }
+  tbody tr{ transition: background .2s ease }
+  tbody tr:hover td{ background: rgba(212,255,74,0.035) }
+
+  .rank{ width: 4.6rem }
+  .rank span{
+    font-family:'Instrument Serif',Georgia,serif;
+    font-size:1.55rem;
+    color:var(--fg-dim);
+    letter-spacing:.01em;
+    display:inline-block;
+    min-width:2.2ch;
+  }
+  tr.top-1 .rank span{ color:var(--gold) }
+  tr.top-2 .rank span{ color:var(--silver) }
+  tr.top-3 .rank span{ color:var(--bronze) }
+  tr.top-1 td{
+    background: linear-gradient(to right, rgba(231,189,106,0.06), transparent 55%);
+  }
+  tr.top-1:hover td{
+    background: linear-gradient(to right, rgba(231,189,106,0.1), rgba(212,255,74,0.04));
+  }
+  tr.top-1 .rank span::before{
+    content:"★ "; color:var(--gold); opacity:.75;
+    font-size:.7em; vertical-align:3px;
+  }
+
+  .name{
+    font-size:1.05rem;
+    font-weight:500;
+    color:var(--fg);
+    letter-spacing:-0.005em;
+  }
+  tr.top-1 .name{ font-weight:600 }
+
+  .verified{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px;
+    margin-left:.55em;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border:1px solid rgba(212,255,74,0.3);
+    border-radius:999px;
+    vertical-align:1px;
+  }
+  .verified svg{ display:block }
+
+  .type{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--fg-mid);
+    padding:.25em .55em;
+    border:1px solid var(--line-strong);
+    border-radius:2px;
+  }
+  .type.dim{
+    border-color:transparent;
+    color:var(--fg-dim);
+    padding-left:0;
+  }
+
+  .metric{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:1.02rem;
+    color:var(--fg);
+    text-align:right;
+    white-space:nowrap;
+    letter-spacing:-0.01em;
+  }
+  tr.top-1 .metric{
+    color:var(--accent);
+    text-shadow:0 0 24px rgba(212,255,74,0.25);
+  }
+
+  .submitter{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:.82rem;
+    color:var(--fg-mid);
+  }
+
+  footer{
+    margin-top:3.5rem;
+    padding-top:1.5rem;
+    border-top:1px solid var(--line);
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:.7rem;
+    color:var(--fg-dim);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    display:flex; flex-wrap:wrap; gap:.6rem 2rem;
+    justify-content:space-between;
+  }
+  footer .dot{
+    display:inline-block; width:5px; height:5px;
+    background:var(--accent); border-radius:50%;
+    vertical-align:middle; margin-right:.55em;
+    box-shadow:0 0 10px rgba(212,255,74,0.6);
+  }
+
+  @media (max-width: 720px){
+    main{ padding-top:3rem; padding-bottom:4rem }
+    .meta{ margin:2rem 0 1.8rem }
+    thead th.col-type, tbody td.col-type,
+    thead th.col-sub, tbody td.col-sub { display:none }
+    thead th, tbody td{ padding: .85rem .6rem }
+    .rank{ width:3rem }
+    .rank span{ font-size:1.25rem }
+    .name{ font-size:.98rem }
+    .metric{ font-size:.95rem }
+  }
+  @media (max-width: 420px){
+    h1{ letter-spacing:-0.025em }
+    .eyebrow{ font-size:.64rem; letter-spacing:.22em }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">FIFA · Skeletal Tracking · 2026</p>
+  <h1>The <em>Leaderboard</em>.</h1>
+  <p class="lede">3D pose estimation of football players from broadcast video — ranked by the organizers, rebuilt in place.</p>
+
+  <section class="meta" aria-label="run metadata">
+    <div class="meta-item">
+      <span class="meta-label">Primary metric</span>
+      <span class="meta-val"><code>total_error</code><span class="sep">lower is better</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Entries</span>
+      <span class="meta-val">51<span class="sep">best submission each</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Last rebuilt</span>
+      <span class="meta-val">Apr 16, 2026  19:05</span>
+    </div>
+  </section>
+
+  <div class="table-frame">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Competitor</th>
+          <th class="col-type">Type</th>
+          <th class="num">total_error</th>
+          <th class="col-sub">Best submitter</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr class="top-1"><td class="rank"><span>01</span></td><td class="name">foolhard</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5200</td><td class="col-sub submitter">foolhard</td></tr>
+<tr class="top-2"><td class="rank"><span>02</span></td><td class="name">fifa-3</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5200</td><td class="col-sub submitter">fifa-3</td></tr>
+<tr class="top-3"><td class="rank"><span>03</span></td><td class="name">fifa-2</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5200</td><td class="col-sub submitter">fifa-2</td></tr>
+<tr><td class="rank"><span>04</span></td><td class="name">houseiwang</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5300</td><td class="col-sub submitter">houseiwang</td></tr>
+<tr><td class="rank"><span>05</span></td><td class="name">pikash07</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5300</td><td class="col-sub submitter">pikash07</td></tr>
+<tr><td class="rank"><span>06</span></td><td class="name">zhanggj16</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5400</td><td class="col-sub submitter">zhanggj16</td></tr>
+<tr><td class="rank"><span>07</span></td><td class="name">050821xjw</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5400</td><td class="col-sub submitter">050821xjw</td></tr>
+<tr><td class="rank"><span>08</span></td><td class="name">chenmg2qq</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5700</td><td class="col-sub submitter">chenmg2qq</td></tr>
+<tr><td class="rank"><span>09</span></td><td class="name">yumjoy</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5700</td><td class="col-sub submitter">yumjoy</td></tr>
+<tr><td class="rank"><span>10</span></td><td class="name">gugugaga</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5900</td><td class="col-sub submitter">gugugaga</td></tr>
+<tr><td class="rank"><span>11</span></td><td class="name">hunterpaddi02</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.5900</td><td class="col-sub submitter">hunterpaddi02</td></tr>
+<tr><td class="rank"><span>12</span></td><td class="name">ahmedsaker</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.6200</td><td class="col-sub submitter">ahmedsaker</td></tr>
+<tr><td class="rank"><span>13</span></td><td class="name">ZIad Nassif</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.6300</td><td class="col-sub submitter">ZIad Nassif</td></tr>
+<tr><td class="rank"><span>14</span></td><td class="name">guojun2008</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.6600</td><td class="col-sub submitter">guojun2008</td></tr>
+<tr><td class="rank"><span>15</span></td><td class="name">Sarthi316GC</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.7100</td><td class="col-sub submitter">Sarthi316GC</td></tr>
+<tr><td class="rank"><span>16</span></td><td class="name">csugzy</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.7100</td><td class="col-sub submitter">csugzy</td></tr>
+<tr><td class="rank"><span>17</span></td><td class="name">amaher-</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.7200</td><td class="col-sub submitter">amaher-</td></tr>
+<tr><td class="rank"><span>18</span></td><td class="name">yu-1414</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">0.8200</td><td class="col-sub submitter">yu-1414</td></tr>
+<tr><td class="rank"><span>19</span></td><td class="name">rfukush</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0100</td><td class="col-sub submitter">rfukush</td></tr>
+<tr><td class="rank"><span>20</span></td><td class="name">Ahmed Aly</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0100</td><td class="col-sub submitter">Ahmed Aly</td></tr>
+<tr><td class="rank"><span>21</span></td><td class="name">babajideowoyele</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0200</td><td class="col-sub submitter">babajideowoyele</td></tr>
+<tr><td class="rank"><span>22</span></td><td class="name">lincharlie</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0200</td><td class="col-sub submitter">lincharlie</td></tr>
+<tr><td class="rank"><span>23</span></td><td class="name">vromero98</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0200</td><td class="col-sub submitter">vromero98</td></tr>
+<tr><td class="rank"><span>24</span></td><td class="name">Cassius</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0300</td><td class="col-sub submitter">Cassius</td></tr>
+<tr><td class="rank"><span>25</span></td><td class="name">riku359</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0300</td><td class="col-sub submitter">riku359</td></tr>
+<tr><td class="rank"><span>26</span></td><td class="name">test</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0400</td><td class="col-sub submitter">test</td></tr>
+<tr><td class="rank"><span>27</span></td><td class="name">Milo</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">Milo</td></tr>
+<tr><td class="rank"><span>28</span></td><td class="name">ortegatron</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">ortegatron</td></tr>
+<tr><td class="rank"><span>29</span></td><td class="name">takashun</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">takashun</td></tr>
+<tr><td class="rank"><span>30</span></td><td class="name">pramani</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">pramani</td></tr>
+<tr><td class="rank"><span>31</span></td><td class="name">eduardohas</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">eduardohas</td></tr>
+<tr><td class="rank"><span>32</span></td><td class="name">Baseline<span class="verified" title="Verified via team-mapping form" aria-label="verified via team-mapping form"><svg viewBox="0 0 12 12" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 6.4 L4.8 9 L9.8 3"/></svg></span></td><td class="col-type"><span class="type">Individual</span></td><td class="metric">1.0500</td><td class="col-sub submitter">tijiang</td></tr>
+<tr><td class="rank"><span>33</span></td><td class="name">huatai_pan</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">huatai_pan</td></tr>
+<tr><td class="rank"><span>34</span></td><td class="name">ko4ro</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">ko4ro</td></tr>
+<tr><td class="rank"><span>35</span></td><td class="name">yanchi</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">yanchi</td></tr>
+<tr><td class="rank"><span>36</span></td><td class="name">yassientawfik</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">yassientawfik</td></tr>
+<tr><td class="rank"><span>37</span></td><td class="name">nefary</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">nefary</td></tr>
+<tr><td class="rank"><span>38</span></td><td class="name">mphillipsio</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">mphillipsio</td></tr>
+<tr><td class="rank"><span>39</span></td><td class="name">sief_sameh</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">sief_sameh</td></tr>
+<tr><td class="rank"><span>40</span></td><td class="name">gabrielesan</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0500</td><td class="col-sub submitter">gabrielesan</td></tr>
+<tr><td class="rank"><span>41</span></td><td class="name">kevin8856</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">kevin8856</td></tr>
+<tr><td class="rank"><span>42</span></td><td class="name">fr7oooo</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">fr7oooo</td></tr>
+<tr><td class="rank"><span>43</span></td><td class="name">luizleitefilho</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">luizleitefilho</td></tr>
+<tr><td class="rank"><span>44</span></td><td class="name">YS</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">YS</td></tr>
+<tr><td class="rank"><span>45</span></td><td class="name">aisatsanz</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">aisatsanz</td></tr>
+<tr><td class="rank"><span>46</span></td><td class="name">emamade</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0600</td><td class="col-sub submitter">emamade</td></tr>
+<tr><td class="rank"><span>47</span></td><td class="name">kev-the-brownie</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.0700</td><td class="col-sub submitter">kev-the-brownie</td></tr>
+<tr><td class="rank"><span>48</span></td><td class="name">canipek</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.1200</td><td class="col-sub submitter">canipek</td></tr>
+<tr><td class="rank"><span>49</span></td><td class="name">gazpacho</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.3300</td><td class="col-sub submitter">gazpacho</td></tr>
+<tr><td class="rank"><span>50</span></td><td class="name">naokioka</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">1.3500</td><td class="col-sub submitter">naokioka</td></tr>
+<tr><td class="rank"><span>51</span></td><td class="name">seantang</td><td class="col-type"><span class="type dim">—</span></td><td class="metric">29.8400</td><td class="col-sub submitter">seantang</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <span>Only the lowest score per competitor is kept</span>
+    <span><span class="dot"></span>Verified mapping = email matched via Codabench</span>
+  </footer>
+</main>
+</body>
+</html>
