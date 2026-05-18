@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIFA Skeletal Tracking Leaderboard (2025)</title>
+<style>
+  :root{
+    --fg: #1f2937;
+    --fg-dim: #6b7280;
+    --fg-mute: #9ca3af;
+    --line: #e5e7eb;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --hover: #f9fafb;
+    --header-bg: #f9fafb;
+    --gold: #d97706;
+    --silver: #64748b;
+    --bronze: #b45309;
+  }
+  *,*::before,*::after{ box-sizing:border-box }
+  html,body{ margin:0; padding:0 }
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  main{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  header.page{ margin-bottom: 1.5rem }
+  h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    margin: 0 0 0.5rem;
+  }
+  .sub{
+    color: var(--fg-dim);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  thead th{
+    font-weight: 500;
+    font-size: 0.76rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  th.num{ text-align: right }
+  tbody td{
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+    font-size: 0.92rem;
+  }
+  tbody tr:last-child td{ border-bottom: 0 }
+  tbody tr:hover td{ background: var(--hover) }
+
+  td.rank{
+    color: var(--fg-dim);
+    width: 3.5rem;
+    text-align: right;
+    padding-right: 1.1rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  tr.top-1 td.rank{ color: var(--gold) }
+  tr.top-2 td.rank{ color: var(--silver) }
+  tr.top-3 td.rank{ color: var(--bronze) }
+  tr.top-1 td.rank::before,
+  tr.top-2 td.rank::before,
+  tr.top-3 td.rank::before{
+    content: "●";
+    margin-right: 0.4em;
+    font-size: 0.7em;
+    vertical-align: 1px;
+  }
+
+  td.name{ color: var(--fg); font-weight: 500 }
+  td.metric{
+    text-align: right;
+    color: var(--fg);
+    font-weight: 500;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  tr.baseline td{ background: #f1f5f9 }
+  tr.baseline:hover td{ background: #e2e8f0 }
+
+  td.writeup{ font-size: 0.85rem; white-space: nowrap }
+  td.writeup a{
+    color: #4338ca;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  td.writeup a:hover{ text-decoration: underline }
+
+  .team-badge{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    margin-left: 0.4em;
+    padding: 0 0.55em;
+    height: 18px;
+    border-radius: 9px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.72rem;
+    font-weight: 600;
+    vertical-align: 1px;
+    cursor: help;
+    white-space: nowrap;
+  }
+  .team-badge::after{
+    content: attr(data-members);
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    background: #111827;
+    color: #f9fafb;
+    padding: 0.35em 0.6em;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.15);
+  }
+  .team-badge::before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 100%;
+    border: 4px solid transparent;
+    border-bottom-color: #111827;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+    z-index: 10;
+  }
+  .team-badge:hover::after,
+  .team-badge:hover::before,
+  .team-badge:focus::after,
+  .team-badge:focus::before{ opacity: 1 }
+
+  @media (max-width: 640px){
+    main{ padding: 1.75rem 1rem 3rem }
+    h1{ font-size: 1.3rem }
+    .card{ border-radius: 6px }
+    thead th, tbody td{ padding: 0.6rem 0.75rem }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="page">
+    <h1>FIFA Skeletal Tracking Leaderboard (2025)</h1>
+    <p class="sub">Final standings from Kaggle</p>
+  </header>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th class="num">Public Error</th>
+          <th class="num">Private Error</th>
+          <th>Write-up</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr class="top-1"><td class="rank">1</td><td class="name">Tim <span class="team-badge" data-members="zljust, hanrongzhuang, Yrralh, yuxiangliu" title="zljust, hanrongzhuang, Yrralh, yuxiangliu">👥 4</span></td><td class="metric">1.30819</td><td class="metric">1.24297</td><td class="writeup"><a href="writeups_2025/solution-Tim.pdf">writeup</a> · <a href="writeups_2025/talk-Tim.pdf">talk</a></td></tr>
+<tr class="top-2"><td class="rank">2</td><td class="name">mil <span class="team-badge" data-members="xth430, Ryuto Fukushima" title="xth430, Ryuto Fukushima">👥 2</span></td><td class="metric">1.37511</td><td class="metric">1.31290</td><td class="writeup"><a href="writeups_2025/solution-mil.pdf">writeup</a></td></tr>
+<tr class="top-3"><td class="rank">3</td><td class="name">arturxarles <span class="team-badge" data-members="Artur Xarles" title="Artur Xarles">👥 1</span></td><td class="metric">1.61518</td><td class="metric">1.54698</td><td class="writeup"><a href="writeups_2025/solution-arturxarles.pdf">writeup</a></td></tr>
+<tr><td class="rank">4</td><td class="name">UPC <span class="team-badge" data-members="Marc Gutiérrez" title="Marc Gutiérrez">👥 1</span></td><td class="metric">1.33684</td><td class="metric">1.59035</td><td class="writeup"></td></tr>
+<tr><td class="rank">5</td><td class="name">gtc <span class="team-badge" data-members="gtc" title="gtc">👥 1</span></td><td class="metric">1.68509</td><td class="metric">1.74701</td><td class="writeup"></td></tr>
+<tr><td class="rank">6</td><td class="name">mxjhl <span class="team-badge" data-members="mxjhl" title="mxjhl">👥 1</span></td><td class="metric">5.28690</td><td class="metric">12.94700</td><td class="writeup"></td></tr>
+<tr><td class="rank">7</td><td class="name">mphillips.io <span class="team-badge" data-members="Mark Phillips" title="Mark Phillips">👥 1</span></td><td class="metric">5.03310</td><td class="metric">12.98733</td><td class="writeup"></td></tr>
+<tr><td class="rank">8</td><td class="name">WhiteFang <span class="team-badge" data-members="WhiteFang" title="WhiteFang">👥 1</span></td><td class="metric">5.36603</td><td class="metric">13.56136</td><td class="writeup"></td></tr>
+<tr class="baseline"><td class="rank"></td><td class="name">Naive Baseline</td><td class="metric">6.23422</td><td class="metric">14.04345</td><td class="writeup"></td></tr>
+<tr><td class="rank">9</td><td class="name">Sakata <span class="team-badge" data-members="Sakata" title="Sakata">👥 1</span></td><td class="metric">8.32755</td><td class="metric">15.55573</td><td class="writeup"></td></tr>
+<tr><td class="rank">10</td><td class="name">CAORUU <span class="team-badge" data-members="CAORUU" title="CAORUU">👥 1</span></td><td class="metric">5.02495</td><td class="metric">15.79977</td><td class="writeup"></td></tr>
+<tr><td class="rank">11</td><td class="name">Weiranyichen <span class="team-badge" data-members="jihg88, Weiranyichen" title="jihg88, Weiranyichen">👥 2</span></td><td class="metric">7.64703</td><td class="metric">16.89017</td><td class="writeup"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

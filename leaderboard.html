@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIFA Skeletal Tracking Leaderboard (2026) </title>
+<style>
+  :root{
+    --fg: #1f2937;
+    --fg-dim: #6b7280;
+    --fg-mute: #9ca3af;
+    --line: #e5e7eb;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --hover: #f9fafb;
+    --header-bg: #f9fafb;
+    --code-bg: #f1f5f9;
+    --code-fg: #0f172a;
+    --verified: #059669;
+    --verified-bg: #d1fae5;
+    --gold: #d97706;
+    --silver: #64748b;
+    --bronze: #b45309;
+  }
+  *,*::before,*::after{ box-sizing:border-box }
+  html,body{ margin:0; padding:0 }
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  main{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  header.page{ margin-bottom: 1.5rem }
+  h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    margin: 0 0 0.5rem;
+  }
+  .sub{
+    color: var(--fg-dim);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .sub code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 0.1em 0.45em;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+  .updated{
+    color: var(--fg-mute);
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+  }
+
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+  }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  thead th{
+    font-weight: 500;
+    font-size: 0.76rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  th.num{ text-align: right }
+  tbody td{
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+    font-size: 0.92rem;
+  }
+  tbody tr:last-child td{ border-bottom: 0 }
+  tbody tr:hover td{ background: var(--hover) }
+
+  td.rank{
+    color: var(--fg-dim);
+    width: 3.5rem;
+    text-align: right;
+    padding-right: 1.1rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  tr.top-1 td.rank{ color: var(--gold) }
+  tr.top-2 td.rank{ color: var(--silver) }
+  tr.top-3 td.rank{ color: var(--bronze) }
+  tr.top-1 td.rank::before,
+  tr.top-2 td.rank::before,
+  tr.top-3 td.rank::before{
+    content: "●";
+    margin-right: 0.4em;
+    font-size: 0.7em;
+    vertical-align: 1px;
+  }
+
+  td.name{ color: var(--fg); font-weight: 500 }
+  td.metric{
+    text-align: right;
+    color: var(--fg);
+    font-weight: 500;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  tr.baseline td{ background: #f1f5f9 }
+  tr.baseline:hover td{ background: #e2e8f0 }
+
+  .ok{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px; height: 16px;
+    margin-left: 0.4em;
+    border-radius: 50%;
+    background: var(--verified-bg);
+    color: var(--verified);
+    font-size: 10px;
+    font-weight: 700;
+    vertical-align: -2px;
+  }
+  .team-badge{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    margin-left: 0.4em;
+    padding: 0 0.55em;
+    height: 18px;
+    border-radius: 9px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.72rem;
+    font-weight: 600;
+    vertical-align: 1px;
+    cursor: help;
+    white-space: nowrap;
+  }
+  .team-badge::after{
+    content: attr(data-members);
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    background: #111827;
+    color: #f9fafb;
+    padding: 0.35em 0.6em;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.15);
+  }
+  .team-badge::before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 100%;
+    border: 4px solid transparent;
+    border-bottom-color: #111827;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+    z-index: 10;
+  }
+  .team-badge:hover::after,
+  .team-badge:hover::before,
+  .team-badge:focus::after,
+  .team-badge:focus::before{ opacity: 1 }
+
+  tr.unverified-toggle{ cursor: pointer; user-select: none }
+  tr.unverified-toggle td{
+    background: var(--header-bg);
+    color: var(--fg-dim);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.7rem 1rem;
+  }
+  tr.unverified-toggle:hover td{ background: var(--hover) }
+  tr.unverified-toggle .arrow{
+    display: inline-block;
+    transition: transform 0.15s ease;
+    font-size: 0.7em;
+    margin-right: 0.4em;
+  }
+
+  @media (max-width: 640px){
+    main{ padding: 1.75rem 1rem 3rem }
+    h1{ font-size: 1.3rem }
+    .card{ border-radius: 6px }
+    thead th, tbody td{ padding: 0.6rem 0.75rem }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="page">
+    <h1>FIFA Skeletal Tracking Leaderboard (2026)</h1>
+    <p class="sub"><span class="ok" title="Verified">&#x2713;</span> = Verified Team/Individual</p>
+    <p class="updated">Last updated: May 18, 2026  16:54</p>
+  </header>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th class="num">Public Error</th>
+          <th class="num">Private Error</th>
+          <th>Write-up</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr class="top-1"><td class="rank">1</td><td class="name">Lenovo_PCIE_Sports_Vision_Lab <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Feng Chen, Guojun Zhang, Tan Zimeng, Xiaojun Guan, Xie Jun, Yujia Yang, Zhenghao Zhang, Zhenyu Guan, Zhepeng Wang, Zhiyuan Xue" title="Feng Chen, Guojun Zhang, Tan Zimeng, Xiaojun Guan, Xie Jun, Yujia Yang, Zhenghao Zhang, Zhenyu Guan, Zhepeng Wang, Zhiyuan Xue">👥 10</span></td><td class="metric">0.3809</td><td class="metric">0.3569</td><td class="writeup"></td></tr>
+<tr class="top-2"><td class="rank">2</td><td class="name">SamuraiX <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Hosei O, Kazuto Iwai, Ryuto Fukushima, Sadao Hirose" title="Hosei O, Kazuto Iwai, Ryuto Fukushima, Sadao Hirose">👥 4</span></td><td class="metric">0.3910</td><td class="metric">0.3842</td><td class="writeup"></td></tr>
+<tr class="top-3"><td class="rank">3</td><td class="name">AAhelpers <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Kumar Ashutosh, isshita" title="Kumar Ashutosh, isshita">👥 2</span></td><td class="metric">0.4514</td><td class="metric">0.4352</td><td class="writeup"></td></tr>
+<tr><td class="rank">5</td><td class="name">Ahmed Ali <span class="ok" title="Verified via team-mapping form">✓</span></td><td class="metric">0.5789</td><td class="metric">0.5509</td><td class="writeup"></td></tr>
+<tr><td class="rank">6</td><td class="name">Sarthi-GameChanger <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Parthsarthi Rawat" title="Parthsarthi Rawat">👥 1</span></td><td class="metric">0.6475</td><td class="metric">0.5927</td><td class="writeup"></td></tr>
+<tr><td class="rank">7</td><td class="name">UCLab <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Ryuto Usami, Shun Takagi, Yuki Gushi" title="Ryuto Usami, Shun Takagi, Yuki Gushi">👥 3</span></td><td class="metric">0.6785</td><td class="metric">0.6345</td><td class="writeup"></td></tr>
+<tr><td class="rank">8</td><td class="name">Zodra <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Ahmed Saker, Sief Eldin Sameh, Ziad Nassf" title="Ahmed Saker, Sief Eldin Sameh, Ziad Nassf">👥 3</span></td><td class="metric">0.6238</td><td class="metric">0.7067</td><td class="writeup"></td></tr>
+<tr><td class="rank">9</td><td class="name">hvrl <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Kazuki Saita, Koshiro Nagano, Naoki Oka, Riku Itsuji, Rintaro Otsubo, Takuya Kurihara, Yuka Takamori" title="Kazuki Saita, Koshiro Nagano, Naoki Oka, Riku Itsuji, Rintaro Otsubo, Takuya Kurihara, Yuka Takamori">👥 7</span></td><td class="metric">0.6882</td><td class="metric">0.7295</td><td class="writeup"></td></tr>
+<tr><td class="rank">10</td><td class="name">IVSLab <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Gibran Zazueta" title="Gibran Zazueta">👥 1</span></td><td class="metric">0.8047</td><td class="metric">0.8648</td><td class="writeup"></td></tr>
+<tr class="baseline"><td class="rank">11</td><td class="name">Baseline <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Admin" title="Admin">👥 1</span></td><td class="metric">1.0530</td><td class="metric">0.9604</td><td class="writeup"></td></tr>
+<tr><td class="rank">20</td><td class="name">Loughborough <span class="ok" title="Verified via team-mapping form">✓</span> <span class="team-badge" data-members="Lauren Holmes" title="Lauren Holmes">👥 1</span></td><td class="metric">1.0580</td><td class="metric">4.8772</td><td class="writeup"></td></tr>
+<tr><td class="rank">21</td><td class="name">Andrew Kang <span class="ok" title="Verified via team-mapping form">✓</span></td><td class="metric">1.0371</td><td class="metric">31.4316</td><td class="writeup"></td></tr>
+<tr><td class="rank">34</td><td class="name">Prakash Ramani <span class="ok" title="Verified via team-mapping form">✓</span></td><td class="metric">1.0529</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">45</td><td class="name">Gabriele <span class="ok" title="Verified via team-mapping form">✓</span></td><td class="metric">1.0544</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+      </tbody>
+      <tbody id="unverified-toggle-row">
+        <tr class="unverified-toggle" onclick="var s=document.getElementById('unverified-body');var a=this.querySelector('.arrow');if(s.style.display==='none'){s.style.display='';a.style.transform=''}else{s.style.display='none';a.style.transform='rotate(-90deg)'}">
+          <td colspan="5"><span class="arrow" style="transform:rotate(-90deg)">&#9660;</span> Unverified entries</td>
+        </tr>
+      </tbody>
+      <tbody id="unverified-body" style="display:none">
+<tr><td class="rank">4</td><td class="name">jiaozq</td><td class="metric">0.5949</td><td class="metric">0.5482</td><td class="writeup"></td></tr>
+<tr><td class="rank">12</td><td class="name">ahmedatefaly</td><td class="metric">1.0125</td><td class="metric">0.9637</td><td class="writeup"></td></tr>
+<tr><td class="rank">13</td><td class="name">lincharlie</td><td class="metric">0.8757</td><td class="metric">0.9651</td><td class="writeup"></td></tr>
+<tr><td class="rank">14</td><td class="name">yanchi</td><td class="metric">1.0536</td><td class="metric">0.9675</td><td class="writeup"></td></tr>
+<tr><td class="rank">15</td><td class="name">mphillipsio</td><td class="metric">0.9562</td><td class="metric">0.9739</td><td class="writeup"></td></tr>
+<tr><td class="rank">16</td><td class="name">seantang</td><td class="metric">1.0405</td><td class="metric">0.9741</td><td class="writeup"></td></tr>
+<tr><td class="rank">17</td><td class="name">youxng</td><td class="metric">1.0539</td><td class="metric">0.9782</td><td class="writeup"></td></tr>
+<tr><td class="rank">18</td><td class="name">huatai_pan</td><td class="metric">1.0173</td><td class="metric">2.8637</td><td class="writeup"></td></tr>
+<tr><td class="rank">19</td><td class="name">nefary</td><td class="metric">0.8631</td><td class="metric">3.6050</td><td class="writeup"></td></tr>
+<tr><td class="rank">22</td><td class="name">betterdays</td><td class="metric">29.8634</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">23</td><td class="name">aisatsanz</td><td class="metric">1.0581</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">24</td><td class="name">cfan307</td><td class="metric">0.9938</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">25</td><td class="name">fahd_ahmed</td><td class="metric">1.5533</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">26</td><td class="name">canipek</td><td class="metric">1.0387</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">27</td><td class="name">fifa-pan</td><td class="metric">1.0686</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">28</td><td class="name">fr7oooo</td><td class="metric">1.0573</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">29</td><td class="name">emamade</td><td class="metric">1.0600</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">30</td><td class="name">y_s_b</td><td class="metric">1.0580</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">31</td><td class="name">yassientawfik</td><td class="metric">1.0541</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">32</td><td class="name">gabertown</td><td class="metric">1.0467</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">33</td><td class="name">seigoh</td><td class="metric">1.0517</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">35</td><td class="name">amrullohrobbani</td><td class="metric">1.0566</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">36</td><td class="name">emimer</td><td class="metric">1.0539</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">37</td><td class="name">khb1698</td><td class="metric">0.8249</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">38</td><td class="name">eduardohas</td><td class="metric">0.9768</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">39</td><td class="name">go1kou</td><td class="metric">1.0529</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">40</td><td class="name">kyorai365</td><td class="metric">1.0550</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">41</td><td class="name">babajideowoyele</td><td class="metric">1.0153</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">42</td><td class="name">kmdacv</td><td class="metric">1.0544</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">43</td><td class="name">ortegatron</td><td class="metric">1.0232</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">44</td><td class="name">gazpacho</td><td class="metric">1.3261</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">46</td><td class="name">luizleitefilho</td><td class="metric">1.0574</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">47</td><td class="name">kev-the-brownie</td><td class="metric">1.0650</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+<tr><td class="rank">48</td><td class="name">vromero98</td><td class="metric">1.0243</td><td class="metric">&mdash;</td><td class="writeup"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>
